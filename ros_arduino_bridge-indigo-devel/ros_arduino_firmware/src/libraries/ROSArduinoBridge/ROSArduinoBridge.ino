@@ -45,8 +45,8 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-//#define USE_BASE      // Enable the base controller code
-#undef USE_BASE     // Disable the base controller code
+#define USE_BASE      // Enable the base controller code
+ //undef USE_BASE     // Disable the base controller code
 
 /* Define the motor controller and encoder library you are using */
 #ifdef USE_BASE
@@ -57,10 +57,10 @@
    //#define POLOLU_MC33926
 
    /* The RoboGaia encoder shield */
-   #define ROBOGAIA
+   //#define ROBOGAIA
    
    /* Encoders directly attached to Arduino board */
-   //#define ARDUINO_ENC_COUNTER
+   #define ARDUINO_ENC_COUNTER
 
    /* L298 Motor driver*/
    //#define L298_MOTOR_DRIVER

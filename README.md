@@ -21,6 +21,7 @@ git pull
 ############################## 重要网页收藏
 http://www.ncnynl.com/archives/201702/1287.html  //讯飞在线语音合成和识别  
 https://zhidao.baidu.com/question/650798520162536005.html?fr=iks&word=htk%D3%EF%D2%F4%CA%B6%B1%F0&ie=gbk //常见语音识别
+http://blog.csdn.net/u011272513/article/details/52139060 //Ubuntu 启动/引导修复
 
 
 ############################## 命令说明

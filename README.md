@@ -20,6 +20,7 @@ git push origin master
 git pull
 ############################## 重要网页收藏
 http://www.ncnynl.com/archives/201702/1287.html  //讯飞在线语音合成和识别  
+https://zhidao.baidu.com/question/650798520162536005.html?fr=iks&word=htk%D3%EF%D2%F4%CA%B6%B1%F0&ie=gbk //常见语音识别
 
 
 ############################## 命令说明
@@ -32,11 +33,48 @@ rostopic echo /xfspeech
 rostopic echo /xfwords
 rostopic pub xfwakeup std_msgs/String "ok"
 
+#常用ROS命令
+rosrun rosserial_python serial_node.py /dev/ttyUSB0
 
+rosrun turtlesim turtlesim_node
+rosrun turtlesim turtle_teleop_key
 
+roslaunch kinect2_bridge kinect2_bridge.launch
+rosrun kinect2_viewer kinect2_viewer
 
+rostopic bw     display bandwidth used by topic
+rostopic echo   print messages to screen
+rostopic hz     display publishing rate of topic
+rostopic list   print information about active topics
+rostopic pub    publish data to topic
+rostopic type   print topic type
 
+rostopic list -v
+rosmsg show [topic]
+roslaunch rbx1_bringup fake_turtlebot.launch
+rosrun rviz rviz -d `rospack find rbx1_nav`/interactive_markers.rviz
 
+source /opt/ros/kinetic/setup.bash
+source devel/setup.bash
+source ./devel/setup.bash
+
+catkin_create_pkg <package_name> [depend1] [depend2] [depend3]
+#catkin_create_pkg beginner_tutorials std_msgs rospy roscpp
+
+rospack depends <package_name>
+#rospack depends beginner_tutorials 
+
+rospack depends1 <package_name>
+#rospack depends1 beginner_tutorials 
+
+rosrun rqt_graph rqt_graph
+
+#uart
+dmesg | grep ttyUSB0
+lsmod | grep usbserial
+sudo cutecom
+sudo putty
+sudo serialhelper
 
 
 

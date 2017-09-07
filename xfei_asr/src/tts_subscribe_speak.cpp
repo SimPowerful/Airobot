@@ -168,7 +168,7 @@ void xfcallback(const std_msgs::String::ConstPtr& msg)
   unlink("/tmp/cmd");  
   mkfifo("/tmp/cmd", 0777);  
   popen("mplayer -quiet -slave -input file=/tmp/cmd 'tts_sample.wav'","r");
-  sleep(30);
+  //sleep(30);
   printf("Mplayer Run Success\n");
 
 }

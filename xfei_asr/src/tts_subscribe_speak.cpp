@@ -23,6 +23,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#include <string>
+
+using  std::string;
 
 /* wav音频头部格式 */
 typedef struct _wave_pcm_hdr
@@ -148,13 +151,27 @@ void xfcallback(const std_msgs::String::ConstPtr& msg)
 {
   char cmd[2000];
   const char* text;
-  int         ret                  = MSP_SUCCESS;
-  const char* session_begin_params = "voice_name = xiaoyan, text_encoding = utf8, sample_rate = 16000, speed = 50, volume = 50, pitch = 50, rdn = 2";
-  const char* filename             = "tts_sample.wav"; //合成的语音文件名称
-  
 
+  int         ret                  = MSP_SUCCESS;
+  const char* session_begin_params = "voice_name = nannan, text_encoding = utf8, sample_rate = 16000, speed = 50, volume = 50, pitch = 50, rdn = 2";
+  const char* filename             = "tts_sample.wav"; //合成的语音文件名称
+///////////////////
+  string str1;
+  str1 = msg->data.c_str();
+  if("CMD" == str1.substr(0,3))
+{
+  //std::cout<<"I heard CMD "<<std::endl;
+  str1=str1.substr(7);
+  std::cout<<"I heard CMD:"<<str1<<std::endl;
+  text = str1.c_str(); 
+}
+///////////////////
+else
+{
   std::cout<<"I heard :"<<msg->data.c_str()<<std::endl;
   text = msg->data.c_str(); 
+}
+  
   /* 文本合成 */
   printf("开始合成 ...\n");
   ret = text_to_speech(text, filename, session_begin_params);
@@ -219,7 +236,7 @@ int main(int argc, char* argv[])
 
     ros::init(argc,argv,"xf_tts");
     ros::NodeHandle n;
-    ros::Subscriber sub =n.subscribe("xfwords",1000,xfcallback);
+    ros::Subscriber sub =n.subscribe("/voice/xf_tts_topic",1000,xfcallback);
     ros::spin();
 
 

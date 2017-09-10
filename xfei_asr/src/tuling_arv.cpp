@@ -75,14 +75,13 @@ int HttpPostRequest(string input)
         CURLcode res;
         // In windows, this will init the winsock stuff
         curl_global_init(CURL_GLOBAL_ALL);
- 
         // get a curl handle
         pCurl = curl_easy_init();
         if (NULL != pCurl)
         {
             // 设置超时时间为10秒
             curl_easy_setopt(pCurl, CURLOPT_TIMEOUT, 10);
- 
+
             // First set the URL that is about to receive our POST.
             // This URL can just as well be a
             // https:// URL if that is what should receive the data.
@@ -100,9 +99,10 @@ int HttpPostRequest(string input)
             curl_easy_setopt(pCurl, CURLOPT_WRITEFUNCTION, writer);
  
             curl_easy_setopt(pCurl, CURLOPT_WRITEDATA, &buffer);
- 
+
             // Perform the request, res will get the return code
             res = curl_easy_perform(pCurl);
+
             // Check for errors
             if (res != CURLE_OK)
             {
@@ -122,7 +122,7 @@ int HttpPostRequest(string input)
       std::cout<< "!!! ERROR The Tuling sever response NULL" << std::endl;
     }
     else
-    {
+    {            
         parseJsonResonse(buffer);
     }
  
